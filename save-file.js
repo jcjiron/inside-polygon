@@ -18,9 +18,7 @@ const saveFile = (fileName, content) => {
 };
 
 const readFile = (fileName) =>{
-    var text = fs.readFileSync(fileName, 'utf8')
-    return text;
-   /* return new Promise((resolve, reject)=>{
+    return new Promise((resolve, reject)=>{
         fs.readFile(fileName, (err, data) => {
             if (err){
                 reject(err)
@@ -28,10 +26,16 @@ const readFile = (fileName) =>{
                 resolve(data)
             }
         });
-    });*/
+    });
+}
+
+const readFileSync = (fileName)=>{
+    const text = fs.readFileSync(fileName, 'utf8')
+    return text;
 }
 
 module.exports = {
     saveFile,
-    readFile
+    readFile,
+    readFileSync
 }
